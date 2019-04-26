@@ -4,20 +4,21 @@ import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.List;
 
+import ar.com.flexibility.examen.domain.entity.Customer;
+
 public class SaleModel {
 
 	private BigInteger saleNumber;
-	private Long clientId;
+	private Customer customerId;
 	private LocalDate saleDate;
 	private List<SaleDetailModel> details;
 
 	public SaleModel() {
 	}
 
-	public SaleModel(BigInteger saleNumber, Long clientId, LocalDate saleDate, List<SaleDetailModel> details) {
-		super();
+	public SaleModel(BigInteger saleNumber, Customer customerId, LocalDate saleDate, List<SaleDetailModel> details) {
 		this.saleNumber = saleNumber;
-		this.clientId = clientId;
+		this.customerId = customerId;
 		this.saleDate = saleDate;
 		this.details = details;
 	}
@@ -30,12 +31,12 @@ public class SaleModel {
 		this.saleNumber = saleNumber;
 	}
 
-	public Long getClientId() {
-		return clientId;
+	public Customer getCustomerId() {
+		return customerId;
 	}
 
-	public void setClientId(Long clientId) {
-		this.clientId = clientId;
+	public void setCustomerId(Customer customerId) {
+		this.customerId = customerId;
 	}
 
 	public LocalDate getSaleDate() {
@@ -56,8 +57,8 @@ public class SaleModel {
 
 	@Override
 	public String toString() {
-		return "Sale [saleNumber=" + saleNumber + ", clientId=" + clientId + ", saleDate=" + saleDate + ", details="
-				+ details + "]";
+		return "SaleModel [saleNumber=" + saleNumber + ", customerId=" + customerId + ", saleDate=" + saleDate
+				+ ", details=" + details + "]";
 	}
 
 }

@@ -2,6 +2,9 @@ package ar.com.flexibility.examen.domain.model;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
+import java.util.List;
+
+import ar.com.flexibility.examen.domain.entity.Sale;
 
 public class CustomerModel {
 
@@ -11,19 +14,20 @@ public class CustomerModel {
 	private LocalDate birthdate;
 	private BigInteger telephone;
 	private String email;
+	private List<Sale> sales;
 
 	public CustomerModel() {
 	}
 
 	public CustomerModel(String name, String surname, String address, LocalDate birthdate, BigInteger telephone,
-			String email) {
-		super();
+			String email, List<Sale> sales) {
 		this.name = name;
 		this.surname = surname;
 		this.address = address;
 		this.birthdate = birthdate;
 		this.telephone = telephone;
 		this.email = email;
+		this.sales = sales;
 	}
 
 	public String getName() {
@@ -74,10 +78,18 @@ public class CustomerModel {
 		this.email = email;
 	}
 
+	public List<Sale> getSales() {
+		return sales;
+	}
+
+	public void setSales(List<Sale> sales) {
+		this.sales = sales;
+	}
+
 	@Override
 	public String toString() {
-		return "Customer [name=" + name + ", surname=" + surname + ", address=" + address + ", birthdate=" + birthdate
-				+ ", telephone=" + telephone + ", email=" + email + "]";
+		return "CustomerModel [name=" + name + ", surname=" + surname + ", address=" + address + ", birthdate="
+				+ birthdate + ", telephone=" + telephone + ", email=" + email + ", sales=" + sales + "]";
 	}
 
 }

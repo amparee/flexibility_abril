@@ -1,36 +1,39 @@
 package ar.com.flexibility.examen.domain.model;
 
+import ar.com.flexibility.examen.domain.entity.Product;
+import ar.com.flexibility.examen.domain.entity.Sale;
+
 public class SaleDetailModel {
 
-	private Long saleId;
-	private Long productId;
+	private Sale sale;
+	private Product product;
 	private int quantity;
 	private double price;
 
 	public SaleDetailModel() {
 	}
 
-	public SaleDetailModel(Long saleId, Long productId, int quantity, double price) {
-		this.saleId = saleId;
-		this.productId = productId;
+	public SaleDetailModel(Sale sale, Product product, int quantity, double price) {
+		this.sale = sale;
+		this.product = product;
 		this.quantity = quantity;
 		this.price = price;
 	}
 
-	public Long getSaleId() {
-		return saleId;
+	public Sale getSale() {
+		return sale;
 	}
 
-	public void setSaleId(Long saleId) {
-		this.saleId = saleId;
+	public void setSale(Sale sale) {
+		this.sale = sale;
 	}
 
-	public Long getProductId() {
-		return productId;
+	public Product getProduct() {
+		return product;
 	}
 
-	public void setProductId(Long productId) {
-		this.productId = productId;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 
 	public int getQuantity() {
@@ -51,8 +54,8 @@ public class SaleDetailModel {
 
 	@Override
 	public String toString() {
-		return "SaleDetailModel [saleId=" + saleId + ", productId=" + productId + ", quantity=" + quantity + ", price="
-				+ price + "]";
+		return "SaleDetailModel [sale=" + sale + ", product=" + product + ", quantity=" + quantity + ", price=" + price
+				+ "]";
 	}
 
 }

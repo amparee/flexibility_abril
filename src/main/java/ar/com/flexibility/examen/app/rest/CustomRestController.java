@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(path = "/custom")
-public class CustomController {
+public class CustomRestController {
 
     @Autowired
     private ProcessMessageService messageService;
