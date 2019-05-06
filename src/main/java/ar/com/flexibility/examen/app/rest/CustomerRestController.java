@@ -30,7 +30,7 @@ public class CustomerRestController {
 		return customerService.listCustomers();
 	}
 
-	@GetMapping("/get-customer/{id}")
+	@GetMapping("/{id}")
 	public Customer getCustomerById(@PathVariable("id") Long id) {
 		Optional<Customer> customer = customerService.findById(id);
 		return customer.get();
