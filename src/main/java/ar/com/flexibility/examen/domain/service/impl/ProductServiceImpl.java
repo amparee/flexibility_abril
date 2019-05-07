@@ -1,7 +1,7 @@
 package ar.com.flexibility.examen.domain.service.impl;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -26,8 +26,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Optional<Product> findById(Long id) {
-		return productJpaRepository.findById(id);
+	public Product findById(Long id) throws NoSuchElementException {
+		return productJpaRepository.findById(id)
+				.orElseThrow(() -> new NoSuchElementException("Product doesn't exist with id: " + id));
 	}
 
 	@Override
@@ -37,8 +38,9 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public boolean delete(Long id) {
-		Optional<Product> product = productJpaRepository.findById(id);
-		return (product.isPresent()) ? true : false;
+		Product product = productJpaRepository.findById(id)
+				.orElseThrow(() -> new NoSuchElementException("Product doesn't exist with id: " + id));
+		return (product != null) ? true : false;
 	}
 
 }

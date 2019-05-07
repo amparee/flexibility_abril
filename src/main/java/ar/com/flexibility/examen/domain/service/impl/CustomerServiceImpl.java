@@ -1,7 +1,7 @@
 package ar.com.flexibility.examen.domain.service.impl;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -26,8 +26,9 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public Optional<Customer> findById(Long id) {
-		return customerJpaRepository.findById(id);
+	public Customer findById(Long id) throws NoSuchElementException {
+		return customerJpaRepository.findById(id)
+				.orElseThrow(() -> new NoSuchElementException("Customer doesn't exist with id: " + id));
 	}
 
 	@Override
@@ -37,8 +38,9 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public boolean delete(Long id) {
-		Optional<Customer> customer = this.findById(id);
-		return (customer.isPresent()) ? true : false;
+		Customer customer = customerJpaRepository.findById(id)
+				.orElseThrow(() -> new NoSuchElementException("Customer doesn't exist with id: " + id));
+		return (customer != null) ? true : false;
 	}
 
 }

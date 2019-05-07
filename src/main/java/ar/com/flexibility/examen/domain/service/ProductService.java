@@ -1,7 +1,7 @@
 package ar.com.flexibility.examen.domain.service;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ public interface ProductService {
 
 	public abstract List<Product> listProducts();
 
-	public abstract Optional<Product> findById(Long id);
+	public abstract Product findById(Long id) throws NoSuchElementException;
 
 	public abstract Product save(Product products);
 

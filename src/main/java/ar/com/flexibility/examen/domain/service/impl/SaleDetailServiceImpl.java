@@ -1,7 +1,7 @@
 package ar.com.flexibility.examen.domain.service.impl;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -26,8 +26,9 @@ public class SaleDetailServiceImpl implements SaleDetailService {
 	}
 
 	@Override
-	public Optional<SaleDetail> findById(Long id) {
-		return saleDetailJpaRepository.findById(id);
+	public SaleDetail findById(Long id) throws NoSuchElementException {
+		return saleDetailJpaRepository.findById(id)
+				.orElseThrow(() -> new NoSuchElementException("SaleDetail doesn't exist with id: " + id));
 	}
 
 	@Override
@@ -37,8 +38,9 @@ public class SaleDetailServiceImpl implements SaleDetailService {
 
 	@Override
 	public boolean delete(Long id) {
-		Optional<SaleDetail> saleDetail = saleDetailJpaRepository.findById(id);
-		return (saleDetail.isPresent()) ? true : false;
+		SaleDetail saleDetail = saleDetailJpaRepository.findById(id)
+				.orElseThrow(() -> new NoSuchElementException("SaleDetail doesn't exist with id: " + id));
+		return (saleDetail != null) ? true : false;
 	}
 
 }

@@ -1,9 +1,11 @@
 package ar.com.flexibility.examen.app.rest;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,29 +28,43 @@ public class CustomerRestController {
 	private CustomerService customerService;
 
 	@GetMapping("/get-customers")
-	public List<Customer> getCustomers() {
-		return customerService.listCustomers();
+	public ResponseEntity<List<Customer>> getCustomers() {
+		return new ResponseEntity<List<Customer>>(customerService.listCustomers(), HttpStatus.OK);
 	}
 
 	@GetMapping("/{id}")
-	public Customer getCustomerById(@PathVariable("id") Long id) {
-		Optional<Customer> customer = customerService.findById(id);
-		return customer.get();
+	public ResponseEntity<?> getCustomerById(@PathVariable("id") Long id) {
+
+		try {
+			Customer customer = customerService.findById(id);
+			return new ResponseEntity<Customer>(customer, HttpStatus.OK);
+		} catch (NoSuchElementException e) {
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
+		}
+
 	}
 
 	@PostMapping("/create")
-	public Customer createCustomer(@RequestBody Customer customer) {
-		return customerService.save(customer);
+	public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
+		return new ResponseEntity<Customer>(customerService.save(customer), HttpStatus.OK);
 	}
 
 	@PutMapping("/update")
-	public Customer update(@RequestBody Customer customer) {
-		return customerService.save(customer);
+	public ResponseEntity<Customer> update(@RequestBody Customer customer) {
+		return new ResponseEntity<Customer>(customerService.save(customer), HttpStatus.OK);
 	}
 
 	@DeleteMapping(path = { "/delete/{id}" })
-	public boolean delete(@PathVariable("id") Long id) {
-		return customerService.delete(id);
+	public ResponseEntity<String> delete(@PathVariable("id") Long id) {
+		boolean deleted = customerService.delete(id);
+
+		if (deleted) {
+			return new ResponseEntity<String>("Customer with id:" + id + " has been deleted", HttpStatus.OK);
+		} else {
+			return new ResponseEntity<String>("Customer with id:" + id + " has not been deleted",
+					HttpStatus.METHOD_NOT_ALLOWED);
+		}
+
 	}
 
 }

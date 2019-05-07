@@ -1,7 +1,7 @@
 package ar.com.flexibility.examen.domain.service;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ public interface CustomerService {
 
 	public abstract List<Customer> listCustomers();
 
-	public abstract Optional<Customer> findById(Long id);
+	public abstract Customer findById(Long id) throws NoSuchElementException;
 
 	public abstract Customer save(Customer customer);
 

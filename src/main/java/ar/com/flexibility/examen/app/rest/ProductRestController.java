@@ -1,9 +1,11 @@
 package ar.com.flexibility.examen.app.rest;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,29 +28,42 @@ public class ProductRestController {
 	private ProductService productService;
 
 	@GetMapping("/get-products")
-	public List<Product> getProducts() {
-		return productService.listProducts();
+	public ResponseEntity<List<Product>> getProducts() {
+		return new ResponseEntity<List<Product>>(productService.listProducts(), HttpStatus.OK);
 	}
 
 	@GetMapping("/{id}")
-	public Product getProductById(@PathVariable("id") Long id) {
-		Optional<Product> product = productService.findById(id);
-		return product.get();
+	public ResponseEntity<?> getProductById(@PathVariable("id") Long id) {
+
+		try {
+			Product product = productService.findById(id);
+			return new ResponseEntity<Product>(product, HttpStatus.OK);
+		} catch (NoSuchElementException e) {
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
+		}
+
 	}
 
 	@PostMapping("/create")
-	public Product createProduct(@RequestBody Product product) {
-		return productService.save(product);
+	public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+		return new ResponseEntity<Product>(productService.save(product), HttpStatus.OK);
 	}
 
 	@PutMapping("/update")
-	public Product update(@RequestBody Product product) {
-		return productService.save(product);
+	public ResponseEntity<Product> update(@RequestBody Product product) {
+		return new ResponseEntity<Product>(productService.save(product), HttpStatus.OK);
 	}
 
 	@DeleteMapping(path = { "/delete/{id}" })
-	public boolean delete(@PathVariable("id") Long id) {
-		return productService.delete(id);
+	public ResponseEntity<String> delete(@PathVariable("id") Long id) {
+		boolean deleted = productService.delete(id);
+
+		if (deleted) {
+			return new ResponseEntity<String>("Product with id:" + id + " has been deleted", HttpStatus.OK);
+		} else {
+			return new ResponseEntity<String>("Product with id:" + id + " has not been deleted",
+					HttpStatus.METHOD_NOT_ALLOWED);
+		}
 	}
 
 }
