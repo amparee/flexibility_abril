@@ -40,7 +40,13 @@ public class ProductServiceImpl implements ProductService {
 	public boolean delete(Long id) {
 		Product product = productJpaRepository.findById(id)
 				.orElseThrow(() -> new NoSuchElementException("Product doesn't exist with id: " + id));
-		return (product != null) ? true : false;
+		if (product != null) {
+			productJpaRepository.delete(product);
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 }

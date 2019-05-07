@@ -1,4 +1,4 @@
-package ar.com.flexibility.examen.domain.service;
+package ar.com.flexibility.examen.test;
 
 import ar.com.flexibility.examen.domain.model.Message;
 import ar.com.flexibility.examen.domain.service.impl.ProcessMessageServiceImpl;

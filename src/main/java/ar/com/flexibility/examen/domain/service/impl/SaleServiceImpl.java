@@ -41,7 +41,13 @@ public class SaleServiceImpl implements SaleService {
 	public boolean delete(Long id) {
 		Sale sale = saleJpaRepository.findById(id)
 				.orElseThrow(() -> new NoSuchElementException("Sale doesn't exist with id: " + id));
-		return (sale != null) ? true : false;
+		if (sale != null) {
+			saleJpaRepository.delete(sale);
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 }

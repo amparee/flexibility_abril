@@ -40,7 +40,14 @@ public class CustomerServiceImpl implements CustomerService {
 	public boolean delete(Long id) {
 		Customer customer = customerJpaRepository.findById(id)
 				.orElseThrow(() -> new NoSuchElementException("Customer doesn't exist with id: " + id));
-		return (customer != null) ? true : false;
+
+		if (customer != null) {
+			customerJpaRepository.delete(customer);
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 }
