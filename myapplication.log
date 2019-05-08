@@ -935,3 +935,36 @@ java.util.NoSuchElementException: Customer doesn't exist with id: 1
 2019-05-07 18:20:38.123  INFO 25256 --- [RMI TCP Connection(2)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2019-05-07 18:20:38.126  INFO 25256 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2019-05-07 18:20:38.335  INFO 25256 --- [RMI TCP Connection(2)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2019-05-07 21:09:50.036  INFO 24072 --- [main] ar.com.flexibility.examen.Application    : Starting Application on LAP0297 with PID 24072 (C:\Users\pservile\Proyectos\flexibility_abril\target\classes started by pservile in C:\Users\pservile\Proyectos\flexibility_abril)
+2019-05-07 21:09:50.042  INFO 24072 --- [main] ar.com.flexibility.examen.Application    : No active profile set, falling back to default profiles: default
+2019-05-07 21:09:51.515  INFO 24072 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-05-07 21:09:51.729  INFO 24072 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 187ms. Found 4 repository interfaces.
+2019-05-07 21:09:52.216  INFO 24072 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d42e7f57] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-07 21:09:52.265  INFO 24072 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.hateoas.config.HateoasConfiguration' of type [org.springframework.hateoas.config.HateoasConfiguration$$EnhancerBySpringCGLIB$$53aecc89] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-05-07 21:09:52.918  INFO 24072 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-05-07 21:09:52.975  INFO 24072 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-05-07 21:09:52.976  INFO 24072 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-05-07 21:09:53.278  INFO 24072 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-05-07 21:09:53.287 DEBUG 24072 --- [main] o.s.web.context.ContextLoader            : Published root WebApplicationContext as ServletContext attribute with name [org.springframework.web.context.WebApplicationContext.ROOT]
+2019-05-07 21:09:53.287  INFO 24072 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3196 ms
+2019-05-07 21:09:53.812  INFO 24072 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2019-05-07 21:09:54.151  INFO 24072 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2019-05-07 21:09:55.872  INFO 24072 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-05-07 21:09:57.059  WARN 24072 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-05-07 21:09:57.661 DEBUG 24072 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 27 mappings in 'requestMappingHandlerMapping'
+2019-05-07 21:09:58.070 DEBUG 24072 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/**/favicon.ico] in 'faviconHandlerMapping'
+2019-05-07 21:09:58.238  INFO 24072 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-05-07 21:09:58.312 DEBUG 24072 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2019-05-07 21:09:58.414 DEBUG 24072 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2019-05-07 21:09:58.433 DEBUG 24072 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2019-05-07 21:09:58.958  INFO 24072 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2019-05-07 21:09:58.981  INFO 24072 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2019-05-07 21:09:59.012  INFO 24072 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2019-05-07 21:09:59.328  INFO 24072 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2019-05-07 21:09:59.350  INFO 24072 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_1
+2019-05-07 21:09:59.377  INFO 24072 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2019-05-07 21:09:59.405  INFO 24072 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_2
+2019-05-07 21:09:59.427  INFO 24072 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_3
+2019-05-07 21:09:59.457  INFO 24072 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_3
+2019-05-07 21:09:59.560  INFO 24072 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-05-07 21:09:59.565  INFO 24072 --- [main] ar.com.flexibility.examen.Application    : Started Application in 10.063 seconds (JVM running for 12.642)
